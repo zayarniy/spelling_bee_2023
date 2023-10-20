@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+  <title>
+    Отправляем JSON-данные на сервер
+  </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body style="text-align:center;" id="body">
+  <!-- заголовок -->
+  <h1> Простая форма для проверки работы JSON </h1>
+  <!-- делаем форму с полями ввода -->
+  <p>
+    <input type="text" id="name" placeholder="Ваше имя">
+    <input type="text" id="lastname" placeholder="и фамилия">
+    <!-- по нажатию на эту кнопку данные уйдут на сервер -->
+    <button onclick="sendJSON()">Проверить JSON</button>
+    <!-- эта кнопка поменяет полученные данные и отправит их снова на сервер -->
+    <button onclick="editJSON()">Изменить JSON</button>
+    <!-- а вот тут они появятся снова, но уже после обработки сервером -->
+  <p class="result" style="color:blue"></p>
+  </p>
+  <!-- скрипт, который обработает нажатие на кнопку и отправит данные на сервер -->
+  <script>
+    var res;
+    var newData;
+    var sendData;
+    // эта функция сработает при нажатии на кнопку
+    function sendJSON() {
+      // с помощью jQuery обращаемся к элементам на странице по их именам
+      let name = document.querySelector('#name');
+      let lastname = document.querySelector('#lastname');
+      // а вот сюда мы поместим ответ от сервера
+      let result = document.querySelector('.result');
+      // создаём новый экземпляр запроса XHR
+      let xhr = new XMLHttpRequest();
+      // адрес, куда мы отправим нашу JSON-строку
+      let url = "http://mgimo.учисьдома.рф/json.php";
+      // открываем соединение
+      xhr.open("POST", url, true);
+      // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
+      // xhr.setRequestHeader("Content-Type", "application/json");
+      // когда придёт ответ на наше обращение к серверу, мы его обработаем здесь
+      xhr.onreadystatechange = function () {
+        // если запрос принят и сервер ответил, что всё в порядке
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // запоминаем данные, которые пришли с сервера
+          res = this.responseText;
+          // выводим то, что ответил нам сервер — так мы убедимся, что данные он получил правильно
+          result.innerHTML = this.responseText;
+        }
+      };
+      // преобразуем наши данные в JSON-строку
+      data = JSON.stringify({ "name": name.value, "lastname": lastname.value });
+      // когда всё готово, отправляем JSON на сервер
+      xhr.send(data);
+    }
+    function editJSON() {
+      // переводим данные от сервера в массив, понятный для JavaScript
+      newData = JSON.parse(res).map(Object.values);
+      // добавляем к каждому имени число с его длиной в скобках
+      for (var i = newData.length - 1; i >= 0; i--) {
+        newData[i][0].name = newData[i][0].name + '(' + newData[i][0].name.length + ')';
+        console.log(newData[i][0].name);
+      }
+      // а вот сюда мы поместим ответ от сервера
+      let result = document.querySelector('.result');
+      // создаём новый экземпляр запроса XHR
+      let xhr = new XMLHttpRequest();
+      // адрес, куда мы отправим нашу JSON-строку
+      let url = "http://sb2023.учисьдома.рф/json.php";
+      // открываем соединение
+      xhr.open("POST", url, true);
+      // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
+      // xhr.setRequestHeader("Content-Type", "application/json");
+      // когда придёт ответ на наше обращение к серверу, мы его обработаем здесь
+      xhr.onreadystatechange = function () {
+        // если запрос принят и сервер ответил, что всё в порядке
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // выводим то, что ответил нам сервер, — так мы убедимся, что данные он получил правильно
+          result.innerHTML = this.responseText;
+        }
+      };
+      // преобразуем наши новые данные JSON в строку
+      sendData = JSON.stringify(newData);
+      // когда всё готово, отправляем JSON на сервер
+      xhr.send(sendData);
+    }
+  </script>
+</body>
+
+</html>

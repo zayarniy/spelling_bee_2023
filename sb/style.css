@@ -1,0 +1,301 @@
+body, html {
+  margin: 0;
+    font-size: 20px;
+    #background-color: #EBB734;
+    background: url(cover.jpg) center center fixed;
+    background-size: 100%;
+    color:black;
+    text-shadow: #FFF 1px 0 10px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1, p {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.txt, form > div {
+  display: block;
+  margin: 0 auto;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+
+select
+{
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 5px;
+  margin: 10px 0px;
+    
+}
+
+.txt {
+  width: 80%;
+}
+
+select {
+  width: 505px;
+}
+
+form > div {
+  width: 81%;
+}
+
+.txt, form > div {
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.clearfix {
+  clear: both;
+}
+
+label {
+  float: left;
+  width: 10%;
+  line-height: 1.5;
+}
+
+.rate-value, .pitch-value {
+  float: right;
+  width: 5%;
+  line-height: 1.5;
+}
+
+#rate, #pitch {
+  float: right;
+  width: 81%;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.controls button {
+  padding: 10px;
+}
+
+.td_answer
+{
+#column-span: all;
+    
+}
+
+.td_answer
+{
+    
+}
+.td_counter
+{
+    align-self: baseline;
+    #width: 30%;
+    text-align: left;
+    vertical-align: center;
+    font-size: 50px;
+}
+
+.table_question
+{
+    
+    border-spacing: 3px;
+    #border-bottom-color: red;
+    #background-color: wheat;
+    #border: 1px solid black;
+}
+
+.td_question_describe
+{
+    border: none;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    padding: 0;
+    visibility: collapse;
+}
+
+.td_question_number
+{
+    border-collapse: collapse;
+    border: none;
+    visibility: collapse;
+}
+
+.td_image
+{
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.input_answer{
+    
+    font-size: 30px;
+    #width: 70%;
+}
+
+.div_questions
+{
+    #background-color: snow;
+}
+
+.div_main
+{
+ min-width: 750px;    
+    max-height: 750px;
+    background-color: #ECECEC;
+    padding: 5px;
+}
+
+.div_allparts
+{
+    #margin-left:auto; 
+    #margin-right: 0%;
+    #float: right;
+    position: relative;
+    
+}
+.div_results
+{
+    float: right;
+    #width:70%; 
+    #margin-left:auto; 
+    #margin-right: 0%;
+    #margin-top: 190px;
+    min-width: 200px;
+    max-width: 250px;
+    top:600px;
+    background-color: #ECECEC;
+    opacity: 0.9;
+    #left: 600px;
+    right: 222px;
+    font-size: 16px;
+    
+    
+    position: sticky;
+}
+
+.image_quest
+{
+    border-radius: 10px;
+    width: 256px;
+}
+
+.div_part
+{
+    padding: 10px;
+    min-width: 700px;
+    max-width: 700px
+}
+
+.div_theme_names
+{
+    font-size: 20px;
+}
+a
+{
+    padding: 0px 20px;
+    text-decoration: none;
+}
+
+a:hover
+{
+    background-color:#CECECE;
+    
+}
+
+.part_head
+{
+    background-color: ECECEC;
+    font-size: larger;
+    text-align: center;
+}
+
+.button_send
+{
+    font-size: 30px;
+    float:left;
+    margin-left: 20%;
+    #width: 400px;
+  #border: 3px solid black;
+    #background-color: antiquewhite;
+}
+
+.input_name
+{
+    font-size: 20px;
+    width: 500px;
+    padding: 3px;
+}
+
+.div_logo
+{
+   #display: table-cell;
+    #display: inline-block;
+    background-color: white;
+        padding: 0px;
+       vertical-align: middle;
+    
+}
+
+.spelling_bee
+{
+    font-size: 40px;
+    #margin: 50px;
+    #margin-bottom: 10px;
+    #vertical-align: middle;
+    #align-self: center;
+    #vertical-align: middle;
+    line-height: 100px;
+    @text-shadow: #000 20px 0 10px;
+    
+    #height: 100px;
+}
+
+.image_header
+{
+    object-fit: cover;
+    border-radius: 20px;
+    width: 100px;    
+    height: 60px;
+    
+}
+
+.tabs { width: 100%; padding: 0px; margin: 0 auto; }
+.tabs>input { display: none; }
+.tabs>div {
+    display: none;
+    padding: 12px;
+    border: 1px solid #C0C0C0;
+    background: #FFFFFF;
+}
+.tabs>label {
+    display: inline-block;
+    padding: 7px;
+    margin: 0 -5px -1px 0;
+    text-align: center;
+    color: #000000;
+    border: 1px solid #000000;
+    background: #ECECEC;
+    cursor: pointer;
+}
+.tabs>input:checked + label {
+    color: #000000;
+    border: 1px solid #C0C0C0;
+    border-bottom: 1px solid #FFFFFF;
+    background: #FFFFFF;
+}
+#tab_1:checked ~ #part_1,
+#tab_2:checked ~ #part_2,
+#tab_3:checked ~ #part_3{ display: block; }
