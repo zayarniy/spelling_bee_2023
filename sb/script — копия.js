@@ -3,7 +3,7 @@ var attempts = [];
 var timeBegin, timeEnd, timeSpan;
 var answersLine = "";
 var theme = "";
-var levelsBall = [5 ,10, 15]
+var levelsPoint = [5 ,10, 15]
 var countSubmit=0
 var title="Spelling Bee Training 2023"
 
@@ -19,7 +19,7 @@ function checkAnswers()
     countTrueAnswers=0;
     answersLine=""
     charTrue=""
-    countBalls=0
+    countPoints=0
     for(i=0;i<answers.length;i++)
         {
             if (answers[i].value!="")
@@ -28,7 +28,7 @@ function checkAnswers()
                 {
                     answers[i].style.color="green"
                     countTrueAnswers++;
-                    countBalls+=levelsBall[Math.floor(i/10)]
+                    countPoints+=levelsPoint[Math.floor(i/10)]
                     charTrue="+"
                 }
             else
@@ -48,7 +48,7 @@ function checkAnswers()
         }
     document.getElementById("count_answers").innerHTML=countAnswers
     document.getElementById("count_true_answers").innerHTML=countTrueAnswers
-    document.getElementById("count_balls").innerHTML=countBalls;
+    document.getElementById("count_balls").innerHTML=countPoints;
     document.getElementById("count_submit").innerHTML=countSubmit;
     
     
@@ -230,7 +230,7 @@ function sendJSON() {
       }
   };
   // преобразуем наши данные в JSON-строку
-  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"trueanswers":String(countTrueAnswers),"begin":timeBegin,"end":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
+  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin":timeBegin,"end":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
   // когда всё готово, отправляем JSON на сервер
   xhr.send(data);
 }
@@ -262,7 +262,8 @@ function Init()
         'International House Tashkent',
         'Гимназия им. Ю.А.Гарнаева',
         'ИРО Сахалинской области',        
-         'ГБОУ СОШ 619',
+         'ГБОУ СОШ 619(корпус Ч)',
+        'ГБОУ СОШ 619(корпус К)',
         'Международная школа имени А.С. Пушкина',
         'МОУ «Гимназия имени Героя Советского Союза Ю.А. Гарнаева»',
         'Сборная г. Обнинск'             

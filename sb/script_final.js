@@ -3,9 +3,9 @@ var attempts = [];
 var timeBegin, timeEnd, timeSpan;
 var answersLine = "";
 var theme = "";
-var levelsPoint = [5 ,10, 15]
+var levelsPoint = [5 ,10, 15, 20]
 var countSubmit=0
-var title="Spelling Bee Training 2023"
+var title="Spelling Bee Final 2023"
 
 const synth = window.speechSynthesis;
 
@@ -128,7 +128,13 @@ function speak2(n) {
       return;
     }
 
-  
+   if (n==31)
+       {
+           var audio=new Audio('sounds/final round/31.wav')
+           audio.play();
+           Attempt(n);
+           return;
+       }
     const utterThis = new SpeechSynthesisUtterance("                        "+_words[n-1]);
     utterThis.onend = function (event) {
       console.log("SpeechSynthesisUtterance.onend");
@@ -287,11 +293,16 @@ function sendJSONToDB() {
 
 var AllWords;
 
+function InitWords2()
+{
+AllWords={"final round":["Author","Gallery","Pillar","Theatre","Character","Column","Harmony","Sonnet","Tragedy","Sketch","Scenery","Exhibition","Genre","Installation","Contemporary","Choreography","Portrait","Composition","Metaphor","Imagery","Accessory","Rhyme","Technique","Allegory","Satire","Sequel","Impressionism","Renaissance","Exposure","Rehearsal","Ceramics","Easel","Dystopia","Waltz","Acoustic","Cello","Emphasis","Calligraphy","Chorus","Rhythm"]    
+       }
+}
 
 function Init()
 {
     
-    InitWords();
+    InitWords2();
     let result = document.querySelector('#send_status');
     result.innerHTML=""
     theme=document.getElementById("theme").innerHTML    

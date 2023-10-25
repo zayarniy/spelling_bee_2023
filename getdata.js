@@ -34,11 +34,11 @@ function editJSON() {
 function reqListener() {
    newData = JSON.parse(this.responseText).map(Object.values);
       document.write("<table border='1'>");
-     document.write("<tr><td>Школа</td><td>Фамилия</td><td>Имя</td><td>Тема</td><td>Баллов</td><td>начало</td><td>окончание</td><td>продолжительность</td><td>ответы</td></tr>");
+     document.write("<tr><td>Школа</td><td>Фамилия</td><td>Имя</td><td>Тема</td><td>Правильных<br>ответов</td><td>Баллов</td><td>начало</td><td>окончание</td><td>продолжительность</td><td>ответы</td></tr>");
   for (var i = newData.length - 1; i >= 0; i--) {
     //newData[i][0].name = newData[i][0].name + '(' + newData[i][0].name.length + ')';      
       document.write("<tr>")
-      document.write("<td>"+newData[i][0].schoolname+"</td><td>"+newData[i][0].lastname+"</td><td>"+newData[i][0].name+"</td><td>"+newData[i][0].theme+"</td><td>"+newData[i][0].trueanswers+"</td><td>"+newData[i][0].begin+"</td><td>"+newData[i][0].end+"</td><td>"+newData[i][0].ellipsed+"</td><td>"+newData[i][0].answers+"</td>")
+      document.write("<td>"+newData[i][0].schoolname+"</td><td>"+newData[i][0].lastname+"</td><td>"+newData[i][0].name+"</td><td>"+newData[i][0].theme+"</td><td>"+newData[i][0].trueanswers+"</td><td>"+newData[i][0].Points+"</td><td>"+newData[i][0].begin+"</td><td>"+newData[i][0].end+"</td><td>"+Math.floor(newData[i][0].ellipsed/1000)+"</td><td>"+newData[i][0].answers+"</td>")
       document.write("</tr>")
     //console.log(newData[i][0]);
   }

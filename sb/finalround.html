@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title></title>
+
+    <link rel="stylesheet" href="style.css" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="sweetalert.min.js"></script>
+  </head>
+
+  <body>
+      <div class="div_main">
+          <div class="div_logo">
+    
+      <img src="logo01.jpg" width="800px" class='image_header'/>
+    <span class="spelling_bee" id="sb_title"></span>
+              
+              </div>
+<div class="div_introduce">
+      First name<sup>*</sup>:<br>
+      <input class="input_name" id="input_first_name" type="text"/><br>
+       Last name<sup>*</sup>:<br>
+      <input class="input_name" id="input_last_name" type="text"/><br/>        
+      <select id="select_schoolname">    
+    </select><br>
+</div>    
+          <div class="div_all_parts">
+              <div class="div_results">
+        <table class="table_results">
+            <tr>
+                <td>
+                    Start time:
+                </td>            
+                <td>
+                <span id="time_begin"></span>
+                </td>
+            </tr>
+            
+            <tr>
+            <td>
+                    Finish time:                
+            </td>
+            <td>
+                    <span id="time_end"></span>                
+            </td>
+            </tr>
+                        <tr>
+            <td>
+                    Elapsed time:                
+            </td>
+            <td>
+                    <span id="time_span"></span>                
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                Answers:</td>
+                <td><span id="count_answers"></span></td>
+            </tr>
+            <tr>
+            <td>
+                    Correct answers:
+                
+                </td>
+                <td>
+                <span id="count_true_answers"></span>
+                </td>
+            </tr>
+            <tr>
+            <td>
+                    Points:
+                
+                </td>
+                <td>
+                <span id="count_balls"></span>
+                </td>
+            </tr>
+            <tr>
+            <td>
+                    Submit N:
+                
+                </td>
+                <td>
+                <span id="count_submit"></span>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Status:
+                </td>
+            <td>
+                <span id="send_status">answers don't save</span>
+            </td>
+            </tr>
+            </table>
+            
+        
+          <!--Результаты-->
+        <button class="button_send" onclick="send()">Submit</button>
+              
+              </div>
+          <div class="div_theme">
+              <!--Это содержимое влияет на скрипт. Тема берется из этого поля -->
+          <h2 id="theme">Final round</h2>
+          </div>
+ <div class="tabs">
+    <input type="radio" name="inset" value="" id="tab_1" checked>
+    <label for="tab_1">Round 1<sup>5</sup></label>
+     
+
+    <input type="radio" name="inset" value="" id="tab_2">
+    <label for="tab_2">Round 2<sup>10</sup></label>
+
+    <input type="radio" name="inset" value="" id="tab_3">
+    <label for="tab_3">Final<sup>15</sup></label>
+    
+     <input type="radio" name="inset" value="" id="tab_4">
+    <label for="tab_4">Super final<sup>20</sup></label>
+     <br><br>
+     
+    <div class="div_part" id="part_1">
+        <div class="div_part_describe">
+        <table class="table_describe">
+            <tr>
+            <td class="td_describe">Click on the image, listen and type in small letters  You can listen to each word only three times.
+            </td>
+            </tr>
+            <tr>
+                <td class="part_head">
+                Round 1
+                </td>
+            </tr>
+            </table>
+        <hr>
+        </div>
+             
+        <div class="div_questions">
+        <table class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/1.jpg" onclick="speak2(1)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c1">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer1" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/2.jpg" onclick="speak2(2)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c2">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer2" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/3.jpg" onclick="speak2(3)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c3">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer3" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/4.jpg" onclick="speak2(4)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c4">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer4" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/5.jpg" onclick="speak2(5)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c5">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer5" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/6.jpg" onclick="speak2(6)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c6">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer6" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/7.jpg" onclick="speak2(7)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c7">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer7" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+          <td class="td_image">
+                    <img class="image_quest" src="images/space/8.jpg" onclick="speak2(8)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c8">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer8" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/9.jpg" onclick="speak2(9)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c9">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer9" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/10.jpg" onclick="speak2(10)"/>
+                </td>
+                <td class="td_counter"> 
+                <span class="span_counter" id="c10">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer10" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+            </div>
+          </div>
+
+           <div class="div_part" id="part_2">
+        <div class="div_part_describe">
+        <table  >
+            <tr>
+            <td class="td_describe">
+There are three difficulty levels. Click to image, listen and type listen word. Type words small letters. You can listen only 3 times. One point is given for each correct answer.
+            </td>
+            </tr>
+            <tr>
+                <td class="part_head">
+                Round 2
+                </td>
+            </tr>
+            </table>
+        <hr>
+        </div>
+             
+        <div class="div_questions">
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/11.jpg" onclick="speak2(11)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c11">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer11" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/12.jpg" onclick="speak2(12)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c12">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer12" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/13.jpg" onclick="speak2(13)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c13">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer13" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/14.jpg" onclick="speak2(14)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c14">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer14" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/15.jpg" onclick="speak2(15)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c15">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer15" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/16.jpg" onclick="speak2(16)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c16">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer16" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/17.jpg" onclick="speak2(17)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c17">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer17" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/18.jpg" onclick="speak2(18)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c18">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer18" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/19.jpg" onclick="speak2(19)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c19">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer19" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/20.jpg" onclick="speak2(20)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c20">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer20" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+            </div>
+          </div>
+           <div class="div_part" id="part_3">
+        <div class="div_part_describe">
+        <table  >
+            <tr>
+            <td class="td_describe">
+There are three difficulty levels. Click to image, listen and type listen word. Type words small letters. You can listen only 3 times. One point is given for each correct answer.          </td>
+            </tr>
+            <tr>
+                <td class="part_head">
+                Final
+                </td>
+            </tr>
+            </table>
+        <hr>
+        </div>
+             
+        <div class="div_questions">
+        <table class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/21.jpg" onclick="speak2(21)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c21">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer21" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>
+        <table class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/22.jpg" onclick="speak2(22)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c22">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer22" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table  class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/23.jpg" onclick="speak2(23)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c23">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer23" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/24.jpg" onclick="speak2(24)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c24">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer24" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/25.jpg" onclick="speak2(25)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c25">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer25" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/26.jpg" onclick="speak2(26)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c26">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer26" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/27.jpg" onclick="speak2(27)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c27">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer27" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/28.jpg" onclick="speak2(28)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c28">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer28" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/29.jpg" onclick="speak2(29)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c29">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer29" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="images/space/30.jpg" onclick="speak2(30)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c30">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer30" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+            </div>
+          </div>
+     <div class="div_part" id="part_4">
+        <div class="div_part_describe">
+        <table  >
+            <tr>
+            <td class="td_describe">
+There are three difficulty levels. Click to image, listen and type listen word. Type words small letters. You can listen only 3 times. One point is given for each correct answer.          </td>
+            </tr>
+            <tr>
+                <td class="part_head">
+                Super final
+                </td>
+            </tr>
+            </table>
+        <hr>
+        </div>
+             
+        <div class="div_questions">
+        <table class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(31)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c31">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer31" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>
+        <table class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(32)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c32">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer32" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table  class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(33)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c33">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer33" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(34)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c34">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer34" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(35)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c35">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer35" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(36)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c36">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer36" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(37)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c37">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer37" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(38)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c38">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer38" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(39)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c39">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer39" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+        <table   class="table_question">            
+        <tr>
+            <td class="td_question_describe"></td>
+        </tr>
+            <tr>
+                <td class="td_question_number"></td>
+                <td class="td_image">
+                    <img class="image_quest" src="" onclick="speak2(40)"/>
+                </td>
+                <td  class="td_counter">
+                <span class="span_counter" id="c40">0</span>
+                </td>
+                </tr>
+            <tr>
+                <td  class="td_answer" colspan="2">
+                    <input id="answer40" type="text" class="input_answer"/>
+                </td>
+            </tr>
+            </table>            
+            </div>
+          </div>
+          </div>
+          </div>              
+        
+</div>      
+      
+    <script src="script_final.js"></script>
+  </body>
+</html>
