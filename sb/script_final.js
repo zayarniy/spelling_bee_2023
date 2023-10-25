@@ -6,6 +6,7 @@ var theme = "";
 var levelsPoint = [5 ,10, 15, 20]
 var countSubmit=0
 var title="Spelling Bee Final 2023"
+var levelname='Round 1'
 
 const synth = window.speechSynthesis;
 
@@ -237,7 +238,7 @@ function sendJSON() {
       }
   };
   // преобразуем наши данные в JSON-строку
-  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin":timeBegin,"end":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
+  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"levelname":levelname, "trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin":timeBegin,"end":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
   // когда всё готово, отправляем JSON на сервер
   xhr.send(data);
 }
@@ -286,9 +287,15 @@ function sendJSONToDB() {
       }
   };
   // преобразуем наши данные в JSON-строку
-  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin_time":timeBegin,"end_time":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
+  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"levelname":levelname,"trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin_time":timeBegin,"end_time":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
   // когда всё готово, отправляем JSON на сервер
   xhr.send(data);
+}
+
+function switch_tab(tabname)
+{
+    levelname=tabname;
+   // alert(tabname);
 }
 
 var AllWords;
