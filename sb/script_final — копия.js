@@ -3,10 +3,9 @@ var attempts = [];
 var timeBegin, timeEnd, timeSpan;
 var answersLine = "";
 var theme = "";
-var levelsPoint = {"Round 1":5,"Round 2":10,"Final":15,"Super final": 20}
+var levelsPoint = [5 ,10, 15, 20]
 var countSubmit=0
 var title="Spelling Bee Final 2023"
-var levelname
 
 const synth = window.speechSynthesis;
 
@@ -29,7 +28,7 @@ function checkAnswers()
                 {
                     answers[i].style.color="green"
                     countTrueAnswers++;
-                    countPoints+=levelsPoint[theme]
+                    countPoints+=levelsPoint[Math.floor(i/10)]
                     charTrue="+"
                 }
             else
@@ -121,7 +120,7 @@ function Attempt(n)
 }
 function speak2(n) {
     if (attempts[n]==3) {
-        alert("Sorry, only 3 times")
+        swal("Sorry, only 3 times")
         return;
     }
     if (synth.speaking) {
@@ -129,7 +128,7 @@ function speak2(n) {
       return;
     }
 
-   if (n==1 && theme=="Super final")
+   if (n==31)
        {
            var audio=new Audio('sounds/final round/31.wav')
            audio.play();
@@ -168,12 +167,12 @@ function checkName()
   let lastname = document.querySelector('#input_last_name').value;
   if (name=="")
       {
-          alert("Input first name");
+          sweetAlert("Input first name");
           return false;
       }
   if (lastname=="")
       {
-          alert("Input last name");
+          sweetAlert("Input last name");
           return false;
       }
   
@@ -181,7 +180,7 @@ function checkName()
 //swal(schoolname);
   if (schoolname=="Select a school")  
       {
-          alert("Select a school");
+          sweetAlert("Select a school");
           return false;
       }
     
@@ -238,7 +237,7 @@ function sendJSON() {
       }
   };
   // преобразуем наши данные в JSON-строку
-  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"levelname":levelname, "trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin":timeBegin,"end":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
+  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin":timeBegin,"end":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
   // когда всё готово, отправляем JSON на сервер
   xhr.send(data);
 }
@@ -287,23 +286,16 @@ function sendJSONToDB() {
       }
   };
   // преобразуем наши данные в JSON-строку
-  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"levelname":levelname,"trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin_time":timeBegin,"end_time":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
+  data = JSON.stringify({"schoolname":schoolname,"theme":theme, "name": name, "lastname": lastname,"trueanswers":String(countTrueAnswers),"Points":String(countPoints), "begin_time":timeBegin,"end_time":timeEnd,"ellipsed":timeSpan, "answers":answersLine});
   // когда всё готово, отправляем JSON на сервер
   xhr.send(data);
-}
-
-function switch_tab(tabname)
-{
-    levelname=tabname;
-   // alert(tabname);
 }
 
 var AllWords;
 
 function InitWords2()
 {
-AllWords={"round 1":["Author","Gallery","Pillar","Theatre","Character","Column","Harmony","Sonnet","Tragedy","Sketch"],"round 2":["Scenery","Exhibition","Genre","Installation","Contemporary","Choreography","Portrait","Composition","Metaphor","Imagery"],
-          "final":["Accessory","Rhyme","Technique","Allegory","Satire","Sequel","Impressionism","Renaissance","Exposure","Rehearsal"],"super final":["Ceramics","Easel","Dystopia","Waltz","Acoustic","Cello","Emphasis","Calligraphy","Chorus","Rhythm"]    
+AllWords={"final round":["Author","Gallery","Pillar","Theatre","Character","Column","Harmony","Sonnet","Tragedy","Sketch","Scenery","Exhibition","Genre","Installation","Contemporary","Choreography","Portrait","Composition","Metaphor","Imagery","Accessory","Rhyme","Technique","Allegory","Satire","Sequel","Impressionism","Renaissance","Exposure","Rehearsal","Ceramics","Easel","Dystopia","Waltz","Acoustic","Cello","Emphasis","Calligraphy","Chorus","Rhythm"]    
        }
 }
 
