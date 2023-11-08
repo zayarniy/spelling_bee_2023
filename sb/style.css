@@ -301,3 +301,8 @@ a:hover
 #tab_2:checked ~ #part_2,
 #tab_3:checked ~ #part_3,
 #tab_4:checked ~ #part_4{ display: block; }
+
+#div_all_parts
+{
+    visibility: hidden;
+}

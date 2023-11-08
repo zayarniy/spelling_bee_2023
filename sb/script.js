@@ -105,6 +105,11 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
 }
 
+function Start()
+{
+    alert('start')
+    document.getElementById("div_all_parts").style.visibility='visible'
+}
 
 function Attempt(n)
 {
