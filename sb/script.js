@@ -107,7 +107,8 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 
 function Start()
 {
-    alert('start')
+    //alert('start')
+    if(checkInputData()==false) return    
     document.getElementById("div_all_parts").style.visibility='visible'
 }
 
@@ -152,7 +153,6 @@ function speak2(n) {
 
 function send()
 {
-    if(checkName()==false) return
     time_End();
     time_Span();
     checkAnswers()
@@ -160,7 +160,7 @@ function send()
     sendJSONToDB();
 }
 
-function checkName()
+function checkInputData()
 {
   let name = document.querySelector('#input_first_name').value;
   let lastname = document.querySelector('#input_last_name').value;
@@ -176,13 +176,19 @@ function checkName()
       }
   
   let schoolname=document.querySelector('#select_schoolname').value;
+  let input_schoolname=document.getElementById("input_schoolname").value
 //swal(schoolname);
   if (schoolname=="Select a school")  
       {
           sweetAlert("Select a school");
           return false;
-      }
-    
+      }    
+    if (schoolname=='Other' && input_schoolname=='')
+        {
+          sweetAlert("Input a school name");
+          return false;
+            
+        }
 }
 
   <!-- скрипт, который обработает нажатие на кнопку и отправит данные на сервер -->
@@ -190,6 +196,21 @@ var res;
 var newData;
 var sendData;
 
+function SelectChange()
+{
+    //alert(document.getElementById('select_schoolname').value)
+    if (document.getElementById('select_schoolname').value=='Other')
+        {
+            document.getElementById('input_schoolname').style.visibility='visible';
+        }
+    else
+        {
+            let input_schoolname=document.getElementById('input_schoolname');
+            input_schoolname.style.visibility='hidden';
+            input_schoolname.value=''
+            
+        }
+}
 // эта функция сработает при нажатии на кнопку
 
 function sendJSON() {
@@ -245,18 +266,8 @@ function sendJSONToDB() {
   // с помощью jQuery обращаемся к элементам на странице по их именам
   let name = document.querySelector('#input_first_name').value;
   let lastname = document.querySelector('#input_last_name').value;
-  /*if (name=="" || lastname=="")
-      {
-          swal("Input name");
-          return;
-      }
-  */
+
   let schoolname=document.querySelector('#select_schoolname').value;
-  /*if (schoolname=="Select a school")  
-      {
-          swal("Select a school");
-          return;
-      }*/
   let result = document.querySelector('#send_status');
   // создаём новый экземпляр запроса XHR
   let xhr = new XMLHttpRequest();
@@ -326,7 +337,7 @@ function Init()
         ]
     schools=schools.sort();
     schools.unshift('Select a school')
-    schools.push('Оther');
+    schools.push('Other');
     select=document.getElementById('select_schoolname');
     for(var i=0;i<schools.length;i++)
         {
